@@ -54,24 +54,23 @@
 		$('#local').val(remote_url.split('/')[3]);
 		$('#save').click(function(event){
 		  // TODO: confirmation box here
-			$.log('replication starting');
 			var source = $('#url').val();
 			var target = $('#local').val();
 			var continuous = "true" === $('#continuous').val();
 			var repOpts = {'continuous': continuous, 'create_target':true};
 			var ajaxOptions = {
 			  success: function(data, textStatus, jqXHR) {
-			    $.log(data);
-			    $.log($('#dialog'));
 			    $('#dialog').html('<h1>Replication triggered<br/>Awesome!</h1>');
 			  },
 			  error: function(jqXHR, textStatus, errorThrown){
-			    $.log('erorr');
+			    $.log('error');
 			    $('#dialog').html('<h1>Something went wrong!</h1>');
 			  }
 			};
+			$.log('replication starting');
 			$.couch.replicate(source, target, ajaxOptions, repOpts);
-			if ("true" === $('#bidirectional')) {
+			if ("true" === $('#bidirectional').val()) {
+  			$.log('bi-directional replication starting');
         $.couch.replicate(target, source, ajaxOptions, repOpts);
 			};
 
