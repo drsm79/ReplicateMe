@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ReplicateMe</title>
+    <link rel="stylesheet" href="style/main.css" type="text/css">
+    <script src="vendor/couchdb/loader.js"></script>
+    <script src="vendor/jquery.utils/jquery.utils.js"></script>
+		<script src="lib/loader.js"></script>
+  </head>
+  <body>
+		<center>
+			<div id="dialog">
+				<form>
+					<center>
+						<h1>ReplicateMe</h1>
+						<table>
+						  <tr>
+						    <td>
+						      <h2>From</h2>
+						    </td>
+						    <td>
+						      <input type="text" id="url" size=10/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+						      <h2>To</h2>
+					      </td>
+					      <td>
+					        <input type="text" id="local" size=10/>
+				        </td>
+			        </tr>
+			      </table>
+						continuous: <input type="checkbox" id="continuous" value="true" />
+						bidirectional: <input type="checkbox" id="bidirectional" value="true" /><br />
+						<button type="button" id="save">Replicate!</button>
+						<button type="button" id="cancel">Cancel</input>
+					</center>
+				</form>
+			</div>
+
+			<div id="code">
+				<center>
+					<p>Put replicate me badges on your site:</p>
+					<textarea><a class="button" href="javascript:void(0)" onClick="var myurl=window.location.href;myurl=myurl.split('/_')[0];var url='http://localhost:5984/replicateme/_design/ReplicateMe/index.html?url=' + myurl;window.location = url;"><center>ReplicateMe!</center></a></textarea>
+				</center>
+			</div>
+		</center>
+	</body>
+	<script>
+		$.log(document.location.search);
+		var remote_url = document.location.search.replace('?url=', '').split('/_')[0];
+		$('#url').val(remote_url);
+		$('#local').val(remote_url.split('/')[3]);
+		$('#save').click(function(event){
+		  // TODO: confirmation box here
+			$.log('replication starting');
+			var source = $('#url').val();
+			var target = $('#local').val();
+			var continuous = "true" === $('#continuous').val();
+			var repOpts = {'continuous': continuous, 'create_target':true};
+			var ajaxOptions = {
+			  success: function(data, textStatus, jqXHR) {
+			    $.log(data);
+			    $.log($('#dialog'));
+			    $('#dialog').html('<h1>Replication triggered<br/>Awesome!</h1>');
+			  },
+			  error: function(jqXHR, textStatus, errorThrown){
+			    $.log('erorr');
+			    $('#dialog').html('<h1>Something went wrong!</h1>');
+			  }
+			};
+			$.couch.replicate(source, target, ajaxOptions, repOpts);
+			if ("true" === $('#bidirectional')) {
+        $.couch.replicate(target, source, ajaxOptions, repOpts);
+			};
+
+		})
+	</script>
+</html>

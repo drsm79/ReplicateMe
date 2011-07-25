@@ -1,0 +1,61 @@
+/* add styles here */
+body {
+  font-family: Helvetica Neue, Helvetica, Arial;
+  color:#FFFFFF;
+  background-color:#eee;
+}
+
+#dialog, #code {
+  background-color:#00BFFF;
+  border:5px solid #ffffff;
+  width: 450px;
+  margin: 50px;
+  padding: 10px;
+  box-shadow: 5px 5px 10px #000000;
+  -moz-box-shadow: 5px 5px 10px #000000;
+  -webkit-box-shadow: 5px 5px 10px #000000;
+}
+
+h1 {
+  letter-spacing: 5px;
+  font-size: 2.5em;
+  font-weight: 100;
+  color:#FFFFFF;
+  margin: 0px;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: 100;
+  color:#FFFFFF;
+  margin: 0px;
+}
+
+form {
+  background-color: #00BFFF;
+  font-size: 1.5em;
+}
+
+input {
+  background-color: #58D3F7;
+  color: #ff4000;
+  font-size: 1.5em;
+  display: inline;
+}
+
+hr {
+  border: 0;
+  width: 50px;
+  color: #ffffff;
+  background-color: #ffffff;
+  height: 1px;
+  margin: 0px;
+  margin-bottom: 10px;
+}
+
+textarea {
+  width: 267px;
+  height: 33px;
+  margin: 0px;
+  background-color: #d0d0d0;
+}
