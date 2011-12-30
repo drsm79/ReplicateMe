@@ -5,7 +5,7 @@ body {
   background-color:#eee;
 }
 
-#dialog, #code {
+.content {
   background-color:#00BFFF;
   border:5px solid #ffffff;
   width: 450px;
@@ -14,6 +14,10 @@ body {
   box-shadow: 5px 5px 10px #000000;
   -moz-box-shadow: 5px 5px 10px #000000;
   -webkit-box-shadow: 5px 5px 10px #000000;
+}
+
+.small {
+  font-size: 0.75em;	
 }
 
 h1 {
