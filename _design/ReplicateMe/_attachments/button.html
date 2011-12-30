@@ -13,7 +13,7 @@
 var get_cookie = function(){
   document.cookie="foo=bar";
   var cookies = document.cookie.split(';');
-  var db_url = 'http://localhost:5984';
+  var db_url = 'http://localhost:5984/replicateme';
   for (c in cookies){
     if (cookies[c].indexOf("replicateme_url=") == 0){
       db_url = cookies[c].replace("replicateme_url=", "");
@@ -25,7 +25,7 @@ var replicate = function(){
   var myurl=window.location.href;
   myurl=myurl.split('/_')[0];
   var db_url = get_cookie();
-  var url = db_url + '/replicateme/_design/ReplicateMe/index.html?url=' + myurl;
+  var url = db_url + '/_design/ReplicateMe/index.html?url=' + myurl;
   window.location = url;  
 }
 var change_db = function(){
@@ -41,7 +41,7 @@ var change_db = function(){
         var get_cookie = function(){
           document.cookie="foo=bar";
           var cookies = document.cookie.split(';');
-          var db_url = 'http://localhost:5984';
+          var db_url = 'http://localhost:5984/replicateme';
           for (c in cookies){
             if (cookies[c].indexOf("replicateme_url=") == 0){
               db_url = cookies[c].replace("replicateme_url=", "");
@@ -53,7 +53,7 @@ var change_db = function(){
           var myurl=window.location.href;
           myurl=myurl.split('/_')[0];
           var db_url = get_cookie();
-          var url = db_url + '/replicateme/_design/ReplicateMe/index.html?url=' + myurl;
+          var url = db_url + '/_design/ReplicateMe/index.html?url=' + myurl;
           window.location = url;  
         }
         var change_db = function(){
