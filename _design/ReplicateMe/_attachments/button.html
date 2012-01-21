@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="style/main.css" type="text/css">
   </head>
   <body>
-    <center>    
+    <center>
       <div class="content">
         <h1>ReplicateMe button</h1>
         <p>Put the following code on your website to add a neat ReplicateMe button.</p>
@@ -26,7 +26,7 @@ var replicate = function(){
   myurl=myurl.split('/_')[0];
   var db_url = get_cookie();
   var url = db_url + '/_design/ReplicateMe/index.html?url=' + myurl;
-  window.location = url;  
+  window.location = url;
 }
 var change_db = function(){
   var orig_db_url = get_cookie();
@@ -34,8 +34,10 @@ var change_db = function(){
   document.cookie="replicateme_url=" + db_url;
 }
 </script>
-<a class="button" href="javascript:void(0)" onClick="replicate()"><center>ReplicateMe!</center></a>
-<a class="small button" href="javascript:void(0)" onClick="change_db()"><center>Change database location</center></a></textarea>
+<div style="position: absolute; top: 0; left: 0; border: 0;"><a class="button" href="javascript:void(0)" onClick="replicate()">
+    <img src="http://localhost:5984/replicateme/_design/ReplicateMe/banner.png"/></a>
+  <!--  <a class="small button" href="javascript:void(0)" onClick="change_db()"><center>Change database location</center></a>-->
+</div></textarea>
         <h2>Example</h2>
         <script>
         var get_cookie = function(){
@@ -54,7 +56,7 @@ var change_db = function(){
           myurl=myurl.split('/_')[0];
           var db_url = get_cookie();
           var url = db_url + '/_design/ReplicateMe/index.html?url=' + myurl;
-          window.location = url;  
+          window.location = url;
         }
         var change_db = function(){
           var orig_db_url = get_cookie();
@@ -62,8 +64,10 @@ var change_db = function(){
           document.cookie="replicateme_url=" + db_url;
         }
   	    </script>
-        <a class="button" href="javascript:void(0)" onClick="replicate()"><center>ReplicateMe!</center></a>
-        <a class="small button" href="javascript:void(0)" onClick="change_db()"><center>Change database location</center></a>
+      </div>
+      <div style="position: absolute; top: 0; left: 0; border: 0;">
+        <a class="button" href="javascript:void(0)" onClick="replicate()"><img src="http://localhost:5984/replicateme/_design/ReplicateMe/banner.png"/></a>
+        <!--<a class="small button" href="javascript:void(0)" onClick="change_db()"><center>Change database location</center></a>-->
       </div>
     </center>
   </body>
